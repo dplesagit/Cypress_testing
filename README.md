@@ -11,7 +11,9 @@ For other possible installations check => https://docs.cypress.io/guides/getting
 Clone repository somewhere locally
 
 Download dependencies for cypress and fakerJS
+
 -npm install cypress
+
 -npm install @faker-js/faker
 
 Running cypress scripts:
