@@ -41,7 +41,7 @@ Cypress.Commands.add('navigate_to_logout', () => {
   })
 
 Cypress.Commands.add('logout_assert', () => {
-    cy.get('.alert-success').should('exist')
+    cy.get('.alert-success').should('be.visible')
     cy.get('h3').should('have.text', 'Featured')
   })
 
@@ -55,7 +55,7 @@ Cypress.Commands.add('register_user', (first_name, last_name, email, password) =
   })
 
 Cypress.Commands.add('register_assert', () => {
-    cy.get('.alert-success').should('exist')
+    cy.get('.alert-success').should('be.visible')
     cy.get('h2').should('have.text', 'Returning Customer')
   }) 
 
@@ -65,7 +65,21 @@ Cypress.Commands.add('login', (email, password) => {
     cy.get('button[type="submit"]').click()
   })
 
-Cypress.Commands.add('login_assert', () => {
-    cy.get('.alert-success').should('exist')
-    cy.get('h3').should('have.text', 'Featured for you Danijel')
+Cypress.Commands.add('login_assert', (name) => {
+    cy.get('.alert-success').should('be.visible')
+    cy.get('h3').should('have.text', `Featured for you ${name}`)
+  })
+
+Cypress.Commands.add('search_result_assert', () => {
+    // assumption that there would be a similar element to the one on the landing page
+    cy.get('.product-thumb').should('be.visible')
+    cy.get('li').should('contain.text', 'iPhone')
+  })
+
+Cypress.Commands.add('add_to_cart_assert', () => {
+    cy.get('a[title="Shopping Cart"]').click({force: true})
+    cy.get('#content').should('not.contain.text', 'Your shopping cart is empty!')
+    
+    // assumption that there would be a similar element to the one on the landing page
+    cy.get('.product-thumb').should('be.visible')
   })
