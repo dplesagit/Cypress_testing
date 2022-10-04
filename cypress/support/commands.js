@@ -70,11 +70,11 @@ Cypress.Commands.add('login_assert', (name) => {
     cy.get('h3').should('have.text', `Featured for you ${name}`)
   })
 
-Cypress.Commands.add('search_result_assert', () => {
+Cypress.Commands.add('search_result_assert', (product) => {
     // assumption that there would be a similar element to the one on the landing page
     cy.get('.product-thumb')
       .should('be.visible')
-      .should('contain.text', 'iPhone')
+      .should('contain.text', product)
   })
 
 Cypress.Commands.add('add_to_cart_assert', () => {

@@ -60,22 +60,32 @@ describe('demo opencart basic functionalities', () => {
     })
 
     it('searches for products on the page', () => {
-      // The user searches for an iPhone
-      cy.get('#search').type('iPhone')
-      cy.get('.btn-light').click()
+      // The user searches for the first featured product
+      cy.get('h4').first()
+        .then(function(get_text){
+          return get_text.text()
+        }).then(function(text){
+          cy.get('#search').type(text)
+          cy.get('.btn-light').click()
 
-      // A list of corresponding products should be available to the user
-      cy.search_result_assert()
+          // A list of corresponding products should be available to the user
+          cy.search_result_assert(text)
+        })
     })
 
     it('searches for products on the detailed search page', () => {
-      // The user searches for an iPhone
-      cy.get('.btn-light').click()
-      cy.get('#input-search').type('iPhone')
-      cy.get('#button-search').click()
+      // The user searches for the first featured product
+      cy.get('h4').first()
+        .then(function(get_text){
+          return get_text.text()
+        }).then(function(text){
+          cy.get('.btn-light').click()
+          cy.get('#input-search').type(text)
+          cy.get('#button-search').click()
 
-      // A list of corresponding products should be available to the user
-      cy.search_result_assert()
+          // A list of corresponding products should be available to the user
+          cy.search_result_assert(text)
+        })
     })
 
     it('views products on the page', () => {
