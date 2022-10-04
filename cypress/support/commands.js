@@ -72,14 +72,17 @@ Cypress.Commands.add('login_assert', (name) => {
 
 Cypress.Commands.add('search_result_assert', () => {
     // assumption that there would be a similar element to the one on the landing page
-    cy.get('.product-thumb').should('be.visible')
-    cy.get('li').should('contain.text', 'iPhone')
+    cy.get('.product-thumb')
+      .should('be.visible')
+      .should('contain.text', 'iPhone')
   })
 
 Cypress.Commands.add('add_to_cart_assert', () => {
     cy.get('a[title="Shopping Cart"]').click({force: true})
     cy.get('#content').should('not.contain.text', 'Your shopping cart is empty!')
-    
+
     // assumption that there would be a similar element to the one on the landing page
-    cy.get('.product-thumb').should('be.visible')
+    cy.get('.product-thumb')
+    .should('be.visible')
+    .should('contain.text', 'Macbook')
   })
