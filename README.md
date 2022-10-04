@@ -1,7 +1,9 @@
 # Cypress_testing
 
 Install requirements:
+If installing via npm:
 Install NodeJS => https://nodejs.org/en/
+For other possible installations check => https://docs.cypress.io/guides/getting-started/installing-cypress#What-you-ll-learn
 
 Clone repository somewhere locally
 
