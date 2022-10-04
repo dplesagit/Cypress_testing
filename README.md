@@ -31,4 +31,5 @@ Choosing a browser:
 More options here => https://docs.cypress.io/guides/guides/command-line#What-you-ll-learn
 
 for example to run a whole spec:
+
 npx cypress run --browser chrome --spec "cypress/e2e/QA_app.cy.js"
